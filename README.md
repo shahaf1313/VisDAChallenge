@@ -19,14 +19,13 @@ python -m venv ~/venv/hrda_visda
 source ~/venv/hrda_visda/bin/activate
 ```
 
-Unzip our code directory and install the requirements:
+Clone this repository and navigate to its location. Then, install the requirements:
 
 ```shell
-unzip HRDA_VisDA.zip
-cd HRDA_VisDA
 pip install -r requirements.txt -f https://download.pytorch.org/whl/torch_stable.html
 pip install mmcv-full==1.3.7 -f https://download.openmmlab.com/mmcv/dist/cu110/torch1.7/index.html # requires the other packages to be installed first
 ```
+Additionally, download the pretrained transformer models as desctibed in [HRDA repository](https://github.com/lhoyer/HRDA).
 
 ## Setup Datasets
 
@@ -67,9 +66,7 @@ python -m tools.test configs/hrda/zerowastev1HR2zerowastev2HR_hrda.py /path/to/p
 ```
 Please be sure to replace `/path/to/pth/file` with the path to your pretrained model, and `output/predictions/folder/` with the path to the output folder where colorful predictions will be saved.
 
-If you wish, you can use our pretrained model that achieved 55.46% mIoU on zerowaste-v2 test set. This file can be found in `pretrained/hrda_v12v2_best_model.pth`.
-
-We also provide a pretrained model that is trained on source-only images. This model can be found in the path `source_pretrained/segformer_on_zerowaste/iter_40000.pth`. This model achieved 38.3% mIoU on the test set of zerowaste-v2.
+Our pretrained model achieved 55.46% mIoU on zerowaste-v2 test set. 
 
 ## Convert Color Predictions To Labels
 In order to convert the colored predictions to labels, you may use the following script:
@@ -89,9 +86,10 @@ For one forward pass in inference time, HRDA uses approximately 160M parameters.
 
 ## Acknowledgements
 
-HRDA is based on the following open-source projects. We thank their
+This work is based on the following open-source projects. We thank their
 authors for making the source code publicly available.
 
+* [HRDA](https://github.com/lhoyer/HRDA)
 * [DAFormer](https://github.com/lhoyer/DAFormer)
 * [MMSegmentation](https://github.com/open-mmlab/mmsegmentation)
 * [SegFormer](https://github.com/NVlabs/SegFormer)
